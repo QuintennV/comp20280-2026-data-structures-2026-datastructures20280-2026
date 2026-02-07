@@ -1,0 +1,35 @@
+Q2: Write the pseudocode for an algorithm which implements a Queue using two stacks.
+    Provide implementations for the enqueue() and dequeue() methods.
+
+QueueFromStacks(Stack queueFront, Stack queueBack):
+    // queueFront holds the outgoing elements of the queue, queueBack the incoming elements
+    Method void enqueue(Element e):
+        queueBack.push(e)
+
+    Method Element dequeue():
+        if queueFront.isEmpty():
+            while !queueBack.isEmpty():
+                element = queueBack.pop()
+                queueFront.push(element)
+
+        if queueFront.isEmpty():
+            throw Error
+
+        return queueFront.pop()
+
+
+Q3: Write the pseudocode algorithm which reverses the elements on a Stack using
+    two additional Stacks (no other data structures are allowed).
+
+Method void reverseStack(Stack input):
+    Stack reverse = new Stack
+    Stack buffer = new Stack
+
+    while !input.isEmpty():
+        reverse.push(input.pop())
+
+    while !reverse.isEmpty():
+        buffer.push(reverse.pop())
+
+    while !buffer.isEmpty():
+        input.push(buffer.pop())
